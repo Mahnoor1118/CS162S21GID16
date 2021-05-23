@@ -17,6 +17,9 @@ public class Ebrandmanagement {
     public static void main(String[] args) {
         // TODO code application logic here
         
+         MainMenu Frame1 = new MainMenu();
+        Frame1.setVisible(true);
+        
     }
     
 }
