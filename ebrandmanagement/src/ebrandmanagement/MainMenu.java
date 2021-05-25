@@ -337,7 +337,7 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
         // TODO add your handling code here:
-        login2 Fro = new login2();
+        IndustrialManagement Fro = new IndustrialManagement();
         dispose();
         Fro.setVisible(true);
     }//GEN-LAST:event_jLabel4MouseClicked
