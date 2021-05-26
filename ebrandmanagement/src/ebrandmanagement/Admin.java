@@ -147,6 +147,7 @@ public class Admin extends javax.swing.JFrame {
         jComboBox2 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setType(java.awt.Window.Type.UTILITY);
 
         jPanel4.setBackground(new java.awt.Color(0, 0, 0));
 
