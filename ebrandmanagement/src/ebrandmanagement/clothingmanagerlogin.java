@@ -47,6 +47,8 @@ public class clothingmanagerlogin extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+        setType(java.awt.Window.Type.UTILITY);
 
         jPanel4.setBackground(new java.awt.Color(0, 0, 0));
 

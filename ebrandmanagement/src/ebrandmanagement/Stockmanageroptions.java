@@ -57,6 +57,8 @@ public class Stockmanageroptions extends javax.swing.JFrame {
         jTable4 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+        setType(java.awt.Window.Type.UTILITY);
 
         jPanel4.setBackground(new java.awt.Color(0, 0, 0));
 

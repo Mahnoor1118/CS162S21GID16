@@ -50,6 +50,8 @@ public class clothingmanagerdetails extends javax.swing.JFrame {
         jSeparator9 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+        setType(java.awt.Window.Type.UTILITY);
 
         jPanel4.setBackground(new java.awt.Color(0, 0, 0));
 
