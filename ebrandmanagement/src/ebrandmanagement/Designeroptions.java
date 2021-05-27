@@ -304,7 +304,7 @@ public class Designeroptions extends javax.swing.JFrame {
         jButton14.setText("EDIT");
 
         jComboBox5.setBackground(new java.awt.Color(252, 211, 5));
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Worker", "Manager", "Designer" }));
+        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "KIDS", "MEN", "WOMEN" }));
         jComboBox5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
         jLabel33.setBackground(new java.awt.Color(0, 0, 0));
