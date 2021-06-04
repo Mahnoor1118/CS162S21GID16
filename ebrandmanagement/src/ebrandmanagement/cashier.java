@@ -9,6 +9,45 @@ package ebrandmanagement;
  *
  * @author MAHNOOR SHAD
  */
-public class cashier {
+public class cashier extends Person{
+    private String username;
+    private String password;
+    private String qualification;
+    private String salary;
+    
+    //getter setter
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getQualification() {
+        return qualification;
+    }
+
+    public String getSalary() {
+        return salary;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setQualification(String qualification) {
+        this.qualification = qualification;
+    }
+
+    public void setSalary(String salary) {
+        this.salary = salary;
+    }
+    
     
 }

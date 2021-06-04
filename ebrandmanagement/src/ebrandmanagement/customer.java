@@ -9,6 +9,18 @@ package ebrandmanagement;
  *
  * @author MAHNOOR SHAD
  */
-public class customer {
+public class customer extends Person {
+    private String dresscode;
+    
+    //getter setter
+
+    public String getDresscode() {
+        return dresscode;
+    }
+
+    public void setDresscode(String dresscode) {
+        this.dresscode = dresscode;
+    }
+    
     
 }

@@ -5,11 +5,37 @@
  */
 package ebrandmanagement;
 
+import java.util.ArrayList;
+
 /**
  *
- * @author fatym
+ * @author samyan
  */
 public class Ebrandmanagement {
+    static Ebrandmanagement e = null;
+    public static Ebrandmanagement getInstance() {
+        if (e == null) {
+            e = new Ebrandmanagement();
+            return e;
+
+        }
+        return e;
+
+    }
+    private Ebrandmanagement() {
+
+    }
+
+    private final ArrayList<Manager> man = new ArrayList<>();
+
+   
+
+    public ArrayList<Manager> getMan() {
+        return man;
+    }
+    
+    
+    
 
     /**
      * @param args the command line arguments

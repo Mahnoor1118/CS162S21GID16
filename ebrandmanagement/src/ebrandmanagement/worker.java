@@ -9,6 +9,27 @@ package ebrandmanagement;
  *
  * @author MAHNOOR SHAD
  */
-public class worker {
+public class worker extends Person{
+    private String catagory;
+    private String salary;
+    
+    //getter setter
+
+    public String getCatagory() {
+        return catagory;
+    }
+
+    public String getSalary() {
+        return salary;
+    }
+
+    public void setCatagory(String catagory) {
+        this.catagory = catagory;
+    }
+
+    public void setSalary(String salary) {
+        this.salary = salary;
+    }
+    
     
 }

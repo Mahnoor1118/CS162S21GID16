@@ -5,19 +5,41 @@
  */
 package ebrandmanagement;
 
+import javax.swing.JOptionPane;
+import com.lowagie.text.Document;
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.Paragraph;
+import com.lowagie.text.pdf.PdfPTable;
+import com.lowagie.text.pdf.PdfWriter;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author fatym
  */
 public class Admin extends javax.swing.JFrame {
 
+    String managerHeader[] = new String[]{"Name", "manager ID", "password", "gender"};
+    int mgrRow,mgrCol;
+    DefaultTableModel manager;
     /**
      * Creates new form Admin
      */
     public Admin() {
         initComponents();
+        manager = new DefaultTableModel(managerHeader, 0);
+        mgrTabel.setModel(manager);
     }
-
+Ebrandmanagement e = Ebrandmanagement.getInstance();
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -61,11 +83,11 @@ public class Admin extends javax.swing.JFrame {
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
-        jTextField11 = new javax.swing.JTextField();
-        jTextField12 = new javax.swing.JTextField();
+        mname = new javax.swing.JTextField();
+        mphone = new javax.swing.JTextField();
+        mqualification = new javax.swing.JTextField();
+        mcnic = new javax.swing.JTextField();
+        memail = new javax.swing.JTextField();
         jSeparator8 = new javax.swing.JSeparator();
         jSeparator9 = new javax.swing.JSeparator();
         jSeparator12 = new javax.swing.JSeparator();
@@ -75,22 +97,22 @@ public class Admin extends javax.swing.JFrame {
         jButton11 = new javax.swing.JButton();
         jButton13 = new javax.swing.JButton();
         jButton14 = new javax.swing.JButton();
-        jComboBox4 = new javax.swing.JComboBox<>();
+        mcat = new javax.swing.JComboBox<>();
         jLabel26 = new javax.swing.JLabel();
-        jTextField13 = new javax.swing.JTextField();
+        msalary = new javax.swing.JTextField();
         jSeparator4 = new javax.swing.JSeparator();
         jSeparator20 = new javax.swing.JSeparator();
         jSeparator21 = new javax.swing.JSeparator();
         jLabel35 = new javax.swing.JLabel();
-        jComboBox5 = new javax.swing.JComboBox<>();
+        mgender = new javax.swing.JComboBox<>();
         jLabel36 = new javax.swing.JLabel();
-        jTextField21 = new javax.swing.JTextField();
-        jTextField22 = new javax.swing.JTextField();
+        muser = new javax.swing.JTextField();
+        mpass = new javax.swing.JTextField();
         jSeparator7 = new javax.swing.JSeparator();
         jLabel37 = new javax.swing.JLabel();
         jSeparator22 = new javax.swing.JSeparator();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTable5 = new javax.swing.JTable();
+        mgrTabel = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
         jLabel38 = new javax.swing.JLabel();
@@ -372,7 +394,7 @@ public class Admin extends javax.swing.JFrame {
                     .addComponent(jButton12))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -385,7 +407,7 @@ public class Admin extends javax.swing.JFrame {
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 546, Short.MAX_VALUE)
+            .addGap(0, 999, Short.MAX_VALUE)
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
                     .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -420,31 +442,31 @@ public class Admin extends javax.swing.JFrame {
         jLabel25.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel25.setText("Email:");
 
-        jTextField7.setBackground(new java.awt.Color(252, 211, 5));
-        jTextField7.setBorder(null);
-        jTextField7.setOpaque(false);
+        mname.setBackground(new java.awt.Color(252, 211, 5));
+        mname.setBorder(null);
+        mname.setOpaque(false);
 
-        jTextField8.setBorder(null);
-        jTextField8.setOpaque(false);
+        mphone.setBorder(null);
+        mphone.setOpaque(false);
 
-        jTextField9.setBorder(null);
-        jTextField9.setOpaque(false);
-        jTextField9.addActionListener(new java.awt.event.ActionListener() {
+        mqualification.setBorder(null);
+        mqualification.setOpaque(false);
+        mqualification.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField9ActionPerformed(evt);
+                mqualificationActionPerformed(evt);
             }
         });
 
-        jTextField11.setBorder(null);
-        jTextField11.setOpaque(false);
-        jTextField11.addActionListener(new java.awt.event.ActionListener() {
+        mcnic.setBorder(null);
+        mcnic.setOpaque(false);
+        mcnic.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField11ActionPerformed(evt);
+                mcnicActionPerformed(evt);
             }
         });
 
-        jTextField12.setBorder(null);
-        jTextField12.setOpaque(false);
+        memail.setBorder(null);
+        memail.setOpaque(false);
 
         jSeparator8.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator8.setForeground(new java.awt.Color(0, 0, 0));
@@ -467,6 +489,11 @@ public class Admin extends javax.swing.JFrame {
         jButton9.setBackground(new java.awt.Color(0, 0, 0));
         jButton9.setForeground(new java.awt.Color(252, 211, 5));
         jButton9.setText("EDIT");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
 
         jButton10.setBackground(new java.awt.Color(0, 0, 0));
         jButton10.setForeground(new java.awt.Color(252, 211, 5));
@@ -479,6 +506,11 @@ public class Admin extends javax.swing.JFrame {
         jButton13.setBackground(new java.awt.Color(0, 0, 0));
         jButton13.setForeground(new java.awt.Color(252, 211, 5));
         jButton13.setText("DELETE");
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
 
         jButton14.setBackground(new java.awt.Color(0, 0, 0));
         jButton14.setForeground(new java.awt.Color(252, 211, 5));
@@ -494,15 +526,15 @@ public class Admin extends javax.swing.JFrame {
             }
         });
 
-        jComboBox4.setBackground(new java.awt.Color(252, 211, 5));
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Outlet", "Clothing", "Stock" }));
-        jComboBox4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        mcat.setBackground(new java.awt.Color(252, 211, 5));
+        mcat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Outlet", "Clothing", "Stock" }));
+        mcat.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
         jLabel26.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel26.setText("Salary:");
 
-        jTextField13.setBorder(null);
-        jTextField13.setOpaque(false);
+        msalary.setBorder(null);
+        msalary.setOpaque(false);
 
         jSeparator4.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator4.setForeground(new java.awt.Color(0, 0, 0));
@@ -516,21 +548,21 @@ public class Admin extends javax.swing.JFrame {
         jLabel35.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel35.setText("Gender:");
 
-        jComboBox5.setBackground(new java.awt.Color(252, 211, 5));
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female" }));
-        jComboBox5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        mgender.setBackground(new java.awt.Color(252, 211, 5));
+        mgender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female" }));
+        mgender.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
         jLabel36.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel36.setText("Username:");
 
-        jTextField21.setBorder(null);
-        jTextField21.setOpaque(false);
+        muser.setBorder(null);
+        muser.setOpaque(false);
 
-        jTextField22.setBorder(null);
-        jTextField22.setOpaque(false);
-        jTextField22.addActionListener(new java.awt.event.ActionListener() {
+        mpass.setBorder(null);
+        mpass.setOpaque(false);
+        mpass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField22ActionPerformed(evt);
+                mpassActionPerformed(evt);
             }
         });
 
@@ -543,9 +575,9 @@ public class Admin extends javax.swing.JFrame {
         jSeparator22.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator22.setForeground(new java.awt.Color(0, 0, 0));
 
-        jTable5.setBackground(new java.awt.Color(0, 0, 0));
-        jTable5.setForeground(new java.awt.Color(252, 211, 5));
-        jTable5.setModel(new javax.swing.table.DefaultTableModel(
+        mgrTabel.setBackground(new java.awt.Color(0, 0, 0));
+        mgrTabel.setForeground(new java.awt.Color(252, 211, 5));
+        mgrTabel.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -561,7 +593,12 @@ public class Admin extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane5.setViewportView(jTable5);
+        mgrTabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mgrTabelMouseClicked(evt);
+            }
+        });
+        jScrollPane5.setViewportView(mgrTabel);
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -596,14 +633,14 @@ public class Admin extends javax.swing.JFrame {
                                         .addGap(18, 18, 18)
                                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jSeparator9)
-                                            .addComponent(jTextField11, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE))
+                                            .addComponent(mcnic, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel9Layout.createSequentialGroup()
                                         .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(mname, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jSeparator20, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(72, 72, 72)
                                         .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -611,32 +648,32 @@ public class Admin extends javax.swing.JFrame {
                                     .addGroup(jPanel9Layout.createSequentialGroup()
                                         .addGap(26, 26, 26)
                                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jTextField8, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
+                                            .addComponent(mphone, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
                                             .addComponent(jSeparator8)))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
                                         .addGap(31, 31, 31)
                                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextField12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(memail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jSeparator21, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                             .addGroup(jPanel9Layout.createSequentialGroup()
                                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel9Layout.createSequentialGroup()
                                         .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(mgender, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
                                         .addGap(0, 0, Short.MAX_VALUE)
                                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
-                                                .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(mcat, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(72, 72, 72))
                                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
                                                 .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(18, 18, 18)
                                                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                     .addComponent(jSeparator22)
-                                                    .addComponent(jTextField21, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE))
+                                                    .addComponent(muser, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE))
                                                 .addGap(77, 77, 77)))))
                                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -648,16 +685,16 @@ public class Admin extends javax.swing.JFrame {
                                         .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel9Layout.createSequentialGroup()
                                         .addGap(15, 15, 15)
-                                        .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(msalary, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel9Layout.createSequentialGroup()
                                         .addGap(15, 15, 15)
-                                        .addComponent(jTextField22, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(mpass, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addComponent(jSeparator7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel9Layout.createSequentialGroup()
                                 .addComponent(jLabel16)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(mqualification, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jSeparator12, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(151, Short.MAX_VALUE))
             .addComponent(jScrollPane5)
@@ -672,12 +709,12 @@ public class Admin extends javax.swing.JFrame {
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel24)
-                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(mname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, 0)
                         .addComponent(jSeparator20, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(mphone, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel23))
                         .addGap(0, 0, 0)
                         .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -685,10 +722,10 @@ public class Admin extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(memail, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator21, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jTextField11, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mcnic, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel17)
                         .addComponent(jLabel25)))
@@ -697,25 +734,25 @@ public class Admin extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
-                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mcat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel22)
-                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(mqualification, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator12, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(msalary, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel26)
-                        .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(mgender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel35)))
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mpass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel37)
-                    .addComponent(jTextField21, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(muser, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel36))
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel9Layout.createSequentialGroup()
@@ -1175,7 +1212,7 @@ public class Admin extends javax.swing.JFrame {
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 554, Short.MAX_VALUE)
+            .addGap(0, 999, Short.MAX_VALUE)
             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel7Layout.createSequentialGroup()
                     .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1451,9 +1488,9 @@ public class Admin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField25ActionPerformed
 
-    private void jTextField22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField22ActionPerformed
+    private void mpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mpassActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField22ActionPerformed
+    }//GEN-LAST:event_mpassActionPerformed
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
         // TODO add your handling code here:
@@ -1468,15 +1505,43 @@ public class Admin extends javax.swing.JFrame {
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
+          Manager m = new Manager ();
+          m.setName(mname.getText());
+          m.setPhNo(mphone.getText());
+          m.setCategoury((String)mcat.getSelectedItem());
+          m.setGender((String)mgender.getSelectedItem());
+          m.setCnic(mcnic.getText());
+          m.setQualification(mqualification.getText());
+          m.setSalary(msalary.getText());
+          m.setUsername(muser.getText());
+          m.setPassword(mpass.getText());
+          
+          
+          e.getMan().add(m);
+        //  JOptionPane.showMessageDialog(null, e.getMan().size());
+          int size = e.getMan().size();
+                manager.setRowCount(0);
+                for (int i = 0; i < size; i++) {
+                    Object[] obj = {e.getMan().get(i).getName(),e.getMan().get(i).getUsername(),e.getMan().get(i).getPassword(),e.getMan().get(i).getGender()};
+                    manager.addRow(obj);
+                }
+          mname.setText("");
+          mphone.setText("");
+          mcnic.setText("");
+          mqualification.setText("");
+          msalary.setText("");
+          muser.setText("");
+          mpass.setText("");
+          memail.setText("");
     }//GEN-LAST:event_jButton8ActionPerformed
 
-    private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField11ActionPerformed
+    private void mcnicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mcnicActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField11ActionPerformed
+    }//GEN-LAST:event_mcnicActionPerformed
 
-    private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
+    private void mqualificationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mqualificationActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField9ActionPerformed
+    }//GEN-LAST:event_mqualificationActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         // TODO add your handling code here:
@@ -1507,6 +1572,94 @@ public class Admin extends javax.swing.JFrame {
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void mgrTabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mgrTabelMouseClicked
+        // TODO add your handling code here:
+        
+        mgrRow = mgrTabel.getSelectedRow();
+        mgrCol = mgrTabel.getColumnCount();
+        
+        mname.setText(manager.getValueAt(mgrRow, 0).toString());
+        muser.setText(manager.getValueAt(mgrRow, 1).toString());
+        for(int i=0;i<e.getMan().size();i++){
+        if(e.getMan().get(i).getUsername().equals(muser.getText())){
+          mname.setText(e.getMan().get(i).getName());
+          mphone.setText(e.getMan().get(i).getPhNo());
+          mcnic.setText(e.getMan().get(i).getCnic());
+          mqualification.setText(e.getMan().get(i).getQualification());
+          msalary.setText(e.getMan().get(i).getSalary());
+          muser.setText(e.getMan().get(i).getUsername());
+          mpass.setText(e.getMan().get(i).getPassword());
+          
+        }
+        }
+    }//GEN-LAST:event_mgrTabelMouseClicked
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        // TODO add your handling code here:
+        e.getMan().remove(mgrRow);
+        manager.setRowCount(0);
+        int size = e.getMan().size();
+                manager.setRowCount(0);
+                for (int i = 0; i < size; i++) {
+                    Object[] obj = {e.getMan().get(i).getName(),e.getMan().get(i).getUsername(),e.getMan().get(i).getPassword(),e.getMan().get(i).getGender()};
+                    manager.addRow(obj);
+                }
+                
+          mname.setText("");
+          mphone.setText("");
+          mcnic.setText("");
+          mqualification.setText("");
+          msalary.setText("");
+          muser.setText("");
+          mpass.setText("");
+          memail.setText("");
+          
+    }//GEN-LAST:event_jButton13ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+        Manager m=new Manager();
+         for(int i=0;i<e.getMan().size();i++){
+        if(e.getMan().get(i).getUsername().equals(muser.getText())){
+           
+//          mname.setText(e.getMan().get(i).getName());
+//          mphone.setText(e.getMan().get(i).getPhNo());
+//          mcnic.setText(e.getMan().get(i).getCnic());
+//          mqualification.setText(e.getMan().get(i).getQualification());
+//          msalary.setText(e.getMan().get(i).getSalary());
+//          muser.setText(e.getMan().get(i).getUsername());
+//          mpass.setText(e.getMan().get(i).getPassword());
+          m.setName(mname.getText());
+          m.setPhNo(mphone.getText());
+          m.setCategoury((String)mcat.getSelectedItem());
+          m.setGender((String)mgender.getSelectedItem());
+          m.setCnic(mcnic.getText());
+          m.setQualification(mqualification.getText());
+          m.setSalary(msalary.getText());
+          m.setUsername(muser.getText());
+          m.setPassword(mpass.getText());
+          
+          e.getMan().set(i, m);
+          
+             }
+         } 
+       
+        int size = e.getMan().size();
+                manager.setRowCount(0);
+                for (int i = 0; i < size; i++) {
+                    Object[] obj = {e.getMan().get(i).getName(),e.getMan().get(i).getUsername(),e.getMan().get(i).getPassword(),e.getMan().get(i).getGender()};
+                    manager.addRow(obj);
+                }
+          mname.setText("");
+          mphone.setText("");
+          mcnic.setText("");
+          mqualification.setText("");
+          msalary.setText("");
+          muser.setText("");
+          mpass.setText("");
+          memail.setText("");
+    }//GEN-LAST:event_jButton9ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1569,8 +1722,6 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JButton jButton9;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
-    private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JComboBox<String> jComboBox6;
     private javax.swing.JComboBox<String> jComboBox7;
     private javax.swing.JLabel jLabel1;
@@ -1653,16 +1804,10 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable5;
     private javax.swing.JTable jTable6;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField21;
-    private javax.swing.JTextField jTextField22;
     private javax.swing.JTextField jTextField23;
     private javax.swing.JTextField jTextField24;
     private javax.swing.JTextField jTextField25;
@@ -1674,8 +1819,16 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JComboBox<String> mcat;
+    private javax.swing.JTextField mcnic;
+    private javax.swing.JTextField memail;
+    private javax.swing.JComboBox<String> mgender;
+    private javax.swing.JTable mgrTabel;
+    private javax.swing.JTextField mname;
+    private javax.swing.JTextField mpass;
+    private javax.swing.JTextField mphone;
+    private javax.swing.JTextField mqualification;
+    private javax.swing.JTextField msalary;
+    private javax.swing.JTextField muser;
     // End of variables declaration//GEN-END:variables
 }
