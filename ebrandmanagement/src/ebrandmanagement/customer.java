@@ -9,7 +9,8 @@ package ebrandmanagement;
  *
  * @author MAHNOOR SHAD
  */
-public class customer extends Person {
+public class customer {
+    private String salary;
     private String dresscode;
     
     //getter setter
@@ -22,5 +23,13 @@ public class customer extends Person {
         this.dresscode = dresscode;
     }
     
+    public  String getSalary() {
+        return salary;
+    }
+
+    
+    public void setSalary(String salary) {
+        this.salary = salary;
+    }
     
 }

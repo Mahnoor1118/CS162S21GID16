@@ -9,47 +9,31 @@ package ebrandmanagement;
  *
  * @author MAHNOOR SHAD
  */
-public class Person {
-    private String name;
-    private String phNo;
-    private String cnic;
-    private String gender;
+public abstract class Person {
+    
     
     //getter setters 
 
-    public String getName() {
-        return name;
-    }
+    public abstract String getName() ;
 
-    public String getPhNo() {
-        return phNo;
-    }
+    public abstract String getPhNo();
 
-    public String getCnic() {
-        return cnic;
-    }
+    public abstract String getCnic() ;
 
-    public String getGender() {
-        return gender;
-    }
+    public abstract String getGender() ;
+       
+    public abstract String getSalary() ;
     
     //setters
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public abstract void setName(String name) ;
 
-    public void setPhNo(String phNo) {
-        this.phNo = phNo;
-    }
+    public abstract void setPhNo(String phNo);
 
-    public void setCnic(String cnic) {
-        this.cnic = cnic;
-    }
+    public abstract void setCnic(String cnic) ;
 
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-    
-    
+    public abstract void setGender(String gender);
+            
+    public abstract void setSalary(String salary) ;
+
 }

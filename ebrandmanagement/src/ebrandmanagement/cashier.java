@@ -9,7 +9,7 @@ package ebrandmanagement;
  *
  * @author MAHNOOR SHAD
  */
-public class cashier extends Person{
+public class cashier {
     private String username;
     private String password;
     private String qualification;

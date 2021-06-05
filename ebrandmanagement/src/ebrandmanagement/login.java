@@ -120,7 +120,7 @@ public class login extends javax.swing.JFrame {
         jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
 
-        admin.setText("UserName");
+        admin.setText("admin123");
         admin.setBorder(null);
         admin.setOpaque(false);
         admin.addActionListener(new java.awt.event.ActionListener() {
@@ -132,7 +132,7 @@ public class login extends javax.swing.JFrame {
         jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
 
-        pass.setText("jPasswordField1");
+        pass.setText("admin123");
         pass.setBorder(null);
         pass.setOpaque(false);
         pass.addActionListener(new java.awt.event.ActionListener() {

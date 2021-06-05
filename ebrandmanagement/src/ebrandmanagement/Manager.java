@@ -9,12 +9,13 @@ package ebrandmanagement;
  *
  * @author MAHNOOR SHAD
  */
-public class Manager extends Person {
+public class Manager extends BasicPerson {
     private String username;
     private String password;
     private String qualification;
     private String categoury;
-    private String salary;
+    private String Email;
+    //private String salary;
 
     public String getUsername() {
         return username;
@@ -32,9 +33,7 @@ public class Manager extends Person {
         return categoury;
     }
 
-    public String getSalary() {
-        return salary;
-    }
+    
 
     public void setUsername(String username) {
         this.username = username;
@@ -52,9 +51,19 @@ public class Manager extends Person {
         this.categoury = categoury;
     }
 
-    public void setSalary(String salary) {
-        this.salary = salary;
+    
+    public String getEmail() {
+        return Email;
     }
+
+    
+    public void setEmail(String Email) {
+        this.Email = Email;
+    }
+
+   
+    
+
     
     
     

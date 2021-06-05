@@ -9,7 +9,7 @@ package ebrandmanagement;
  *
  * @author MAHNOOR SHAD
  */
-public class designer extends Person{
+public class designer {
     private String email;
     private String experience;
     private String qualification;

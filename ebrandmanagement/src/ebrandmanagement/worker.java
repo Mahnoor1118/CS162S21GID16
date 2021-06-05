@@ -9,7 +9,7 @@ package ebrandmanagement;
  *
  * @author MAHNOOR SHAD
  */
-public class worker extends Person{
+public class worker {
     private String catagory;
     private String salary;
     
