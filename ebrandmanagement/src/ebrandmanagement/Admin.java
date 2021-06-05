@@ -39,7 +39,7 @@ public class Admin extends javax.swing.JFrame {
         manager = new DefaultTableModel(managerHeader, 0);
         mgrTabel.setModel(manager);
     }
-Ebrandmanagement e = Ebrandmanagement.getInstance();
+    Studio e = Studio.getInstance();
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -1534,12 +1534,12 @@ Ebrandmanagement e = Ebrandmanagement.getInstance();
           
           
           
-          e.getMan().add(m);
+          e.addManager(m);
         //  JOptionPane.showMessageDialog(null, e.getMan().size());
-          int size = e.getMan().size();
+          int size = e.managerList.size();
                 manager.setRowCount(0);
                 for (int i = 0; i < size; i++) {
-                    Object[] obj = {e.getMan().get(i).getName(),e.getMan().get(i).getUsername(),e.getMan().get(i).getPassword(),e.getMan().get(i).getGender()};
+                    Object[] obj = {e.managerList.get(i).getName(),e.managerList.get(i).getUsername(),e.managerList.get(i).getPassword(),e.managerList.get(i).getGender()};
                     manager.addRow(obj);
                 }
           mname.setText("");
@@ -1598,15 +1598,15 @@ Ebrandmanagement e = Ebrandmanagement.getInstance();
         
         mname.setText(manager.getValueAt(mgrRow, 0).toString());
         muser.setText(manager.getValueAt(mgrRow, 1).toString());
-        for(int i=0;i<e.getMan().size();i++){
-        if(e.getMan().get(i).getUsername().equals(muser.getText())){
-          mname.setText(e.getMan().get(i).getName());
-          mphone.setText(e.getMan().get(i).getPhNo());
-          mcnic.setText(e.getMan().get(i).getCnic());
-          mqualification.setText(e.getMan().get(i).getQualification());
-          msalary.setText(e.getMan().get(i).getSalary());
-          muser.setText(e.getMan().get(i).getUsername());
-          mpass.setText(e.getMan().get(i).getPassword());
+        for(int i=0;i<e.managerList.size();i++){
+        if(e.managerList.get(i).getUsername().equals(muser.getText())){
+          mname.setText(e.managerList.get(i).getName());
+          mphone.setText(e.managerList.get(i).getPhNo());
+          mcnic.setText(e.managerList.get(i).getCnic());
+          mqualification.setText(e.managerList.get(i).getQualification());
+          msalary.setText(e.managerList.get(i).getSalary());
+          muser.setText(e.managerList.get(i).getUsername());
+          mpass.setText(e.managerList.get(i).getPassword());
           
         }
         }
@@ -1614,12 +1614,12 @@ Ebrandmanagement e = Ebrandmanagement.getInstance();
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
         // TODO add your handling code here:
-        e.getMan().remove(mgrRow);
+        e.deleteManager(mgrRow);
         manager.setRowCount(0);
-        int size = e.getMan().size();
+        int size = e.managerList.size();
                 manager.setRowCount(0);
                 for (int i = 0; i < size; i++) {
-                    Object[] obj = {e.getMan().get(i).getName(),e.getMan().get(i).getUsername(),e.getMan().get(i).getPassword(),e.getMan().get(i).getGender()};
+                    Object[] obj = {e.managerList.get(i).getName(),e.managerList.get(i).getUsername(),e.managerList.get(i).getPassword(),e.managerList.get(i).getGender()};
                     manager.addRow(obj);
                 }
                 
@@ -1637,8 +1637,8 @@ Ebrandmanagement e = Ebrandmanagement.getInstance();
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
         Manager m=new Manager();
-         for(int i=0;i<e.getMan().size();i++){
-        if(e.getMan().get(i).getUsername().equals(muser.getText())){
+         for(int i=0;i<e.managerList.size();i++){
+        if(e.managerList.get(i).getUsername().equals(muser.getText())){
            
 //          mname.setText(e.getMan().get(i).getName());
 //          mphone.setText(e.getMan().get(i).getPhNo());
@@ -1657,15 +1657,15 @@ Ebrandmanagement e = Ebrandmanagement.getInstance();
           m.setUsername(muser.getText());
           m.setPassword(mpass.getText());
           
-          e.getMan().set(i, m);
+          e.updateManager( m,i);
           
              }
          } 
        
-        int size = e.getMan().size();
+        int size = e.managerList.size();
                 manager.setRowCount(0);
                 for (int i = 0; i < size; i++) {
-                    Object[] obj = {e.getMan().get(i).getName(),e.getMan().get(i).getUsername(),e.getMan().get(i).getPassword(),e.getMan().get(i).getGender()};
+                    Object[] obj = {e.managerList.get(i).getName(),e.managerList.get(i).getUsername(),e.managerList.get(i).getPassword(),e.managerList.get(i).getGender()};
                     manager.addRow(obj);
                 }
           mname.setText("");
