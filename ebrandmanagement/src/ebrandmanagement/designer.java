@@ -9,13 +9,17 @@ package ebrandmanagement;
  *
  * @author MAHNOOR SHAD
  */
-public class designer {
+public class designer extends Person{
+    
     private String email;
     private String experience;
     private String qualification;
     private String username;
     private String password;
-    private String salary;
+    private String Name;
+    private String PhoneNumber;
+    private String CNIC;
+    private String Gender;
     
     //getter setter
 
@@ -39,9 +43,6 @@ public class designer {
         return password;
     }
 
-    public String getSalary() {
-        return salary;
-    }
 
     public void setEmail(String email) {
         this.email = email;
@@ -63,8 +64,54 @@ public class designer {
         this.password = password;
     }
 
+    @Override
+    public String getName() {
+        return Name;//To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getPhNo() {
+        return PhoneNumber; //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getCnic() {
+        return CNIC;//To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getGender() {
+       return Gender; //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setName(String Name) {
+       this.Name= Name; //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setPhNo(String PhoneNumber) {
+        this.PhoneNumber= PhoneNumber; //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setCnic(String CNIC) {
+        this.CNIC= CNIC; //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void setGender(String Gender) {
+        this.Gender= Gender; //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getSalary() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
     public void setSalary(String salary) {
-        this.salary = salary;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

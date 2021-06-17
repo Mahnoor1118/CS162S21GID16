@@ -122,7 +122,7 @@ public class Admin extends javax.swing.JFrame {
         jLabel43 = new javax.swing.JLabel();
         jLabel44 = new javax.swing.JLabel();
         jLabel45 = new javax.swing.JLabel();
-        jTextField23 = new javax.swing.JTextField();
+        name = new javax.swing.JTextField();
         jTextField24 = new javax.swing.JTextField();
         jTextField25 = new javax.swing.JTextField();
         jTextField26 = new javax.swing.JTextField();
@@ -822,9 +822,9 @@ public class Admin extends javax.swing.JFrame {
         jLabel45.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel45.setText("Email:");
 
-        jTextField23.setBackground(new java.awt.Color(252, 211, 5));
-        jTextField23.setBorder(null);
-        jTextField23.setOpaque(false);
+        name.setBackground(new java.awt.Color(252, 211, 5));
+        name.setBorder(null);
+        name.setOpaque(false);
 
         jTextField24.setBorder(null);
         jTextField24.setOpaque(false);
@@ -860,6 +860,11 @@ public class Admin extends javax.swing.JFrame {
         jButton24.setBackground(new java.awt.Color(0, 0, 0));
         jButton24.setForeground(new java.awt.Color(252, 211, 5));
         jButton24.setText("ADD/EMAIL");
+        jButton24.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton24MouseClicked(evt);
+            }
+        });
         jButton24.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton24ActionPerformed(evt);
@@ -1007,7 +1012,7 @@ public class Admin extends javax.swing.JFrame {
                                             .addGroup(jPanel12Layout.createSequentialGroup()
                                                 .addComponent(jLabel44, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jTextField23, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(12, 12, 12)))
                                         .addGap(72, 72, 72)
                                         .addComponent(jLabel43, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -1066,7 +1071,7 @@ public class Admin extends javax.swing.JFrame {
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel44)
-                            .addComponent(jTextField23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, 0)
                         .addComponent(jSeparator27, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel12Layout.createSequentialGroup()
@@ -1678,6 +1683,22 @@ public class Admin extends javax.swing.JFrame {
           memail.setText("");
     }//GEN-LAST:event_jButton9ActionPerformed
 
+    private void jButton24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton24MouseClicked
+        // TODO add your handling code here:
+//         designer biodata= new designer();
+//          biodata.(name.getText());
+//          m.setPhNo(mphone.getText());
+//          m.setCategoury((String)mcat.getSelectedItem());
+//          m.setGender((String)mgender.getSelectedItem());
+//          m.setCnic(mcnic.getText());
+//          m.setQualification(mqualification.getText());
+//          m.setSalary(msalary.getText());
+//          m.setUsername(muser.getText());
+//          m.setPassword(mpass.getText());
+        
+        
+    }//GEN-LAST:event_jButton24MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1827,7 +1848,6 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField23;
     private javax.swing.JTextField jTextField24;
     private javax.swing.JTextField jTextField25;
     private javax.swing.JTextField jTextField26;
@@ -1849,5 +1869,6 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JTextField mqualification;
     private javax.swing.JTextField msalary;
     private javax.swing.JTextField muser;
+    private javax.swing.JTextField name;
     // End of variables declaration//GEN-END:variables
 }
