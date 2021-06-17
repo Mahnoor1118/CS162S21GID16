@@ -20,6 +20,7 @@ public class designer extends Person{
     private String PhoneNumber;
     private String CNIC;
     private String Gender;
+    private String Salary;
     
     //getter setter
 
@@ -106,12 +107,12 @@ public class designer extends Person{
 
     @Override
     public String getSalary() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return Salary; //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void setSalary(String salary) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void setSalary(String Salary) {
+        this.Salary= Salary; //To change body of generated methods, choose Tools | Templates.
     }
     
     

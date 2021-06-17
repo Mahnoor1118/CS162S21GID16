@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class Studio {
     private static Studio instance ;
     public ArrayList<Manager> managerList = new ArrayList<>();
+    public ArrayList<designer> designerList = new ArrayList<>();
     
     public static Studio getInstance(){
         if(instance==null)
@@ -36,6 +37,22 @@ public class Studio {
    public void updateManager(Manager b, int a )
    {
        managerList.set(a,b); 
+       
+   }
+   
+   public void addDesigner(designer a)
+    {
+        designerList.add(a);
+    }
+    
+    public void deleteDesigner(int a)
+   {
+       designerList.remove(a);
+   }
+   
+   public void updateDesigner(designer b, int a )
+   {
+       designerList.set(a,b); 
        
    }
 }
