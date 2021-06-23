@@ -36,6 +36,10 @@ public class Admin extends javax.swing.JFrame {
     String designerHeader[] = new String[]{"Name", "Phone Number", "Username", "Password", "CNIC", "Gender", "Salary", "Qualifiaction", "Experience", "Email"};
     int Row,Col;
     DefaultTableModel dtm;
+    
+    String workerHeader[] = new String[]{"Name", "Phone Number", "CNIC", "Gender", "Salary", "Category"};
+    int wRow,wCol;
+    DefaultTableModel worker;
     /**
      * Creates new form Admin
      */
@@ -46,6 +50,9 @@ public class Admin extends javax.swing.JFrame {
         
         dtm = new DefaultTableModel(designerHeader, 0);
         desTable.setModel(dtm);
+        
+        worker = new DefaultTableModel(workerHeader, 0);
+        worTable.setModel(worker);
         
     }
     Studio e = Studio.getInstance();
@@ -170,16 +177,16 @@ public class Admin extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        worTable = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
+        wname = new javax.swing.JTextField();
+        wphone = new javax.swing.JTextField();
+        wcnic = new javax.swing.JTextField();
+        wsalary = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
@@ -190,9 +197,9 @@ public class Admin extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        wcategory = new javax.swing.JComboBox<>();
         jLabel27 = new javax.swing.JLabel();
-        jComboBox4 = new javax.swing.JComboBox<>();
+        wgender = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -518,6 +525,11 @@ public class Admin extends javax.swing.JFrame {
         jButton11.setBackground(new java.awt.Color(0, 0, 0));
         jButton11.setForeground(new java.awt.Color(252, 211, 5));
         jButton11.setText("SEARCH");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
 
         jButton13.setBackground(new java.awt.Color(0, 0, 0));
         jButton13.setForeground(new java.awt.Color(252, 211, 5));
@@ -893,18 +905,38 @@ public class Admin extends javax.swing.JFrame {
                 jButton25MouseClicked(evt);
             }
         });
+        jButton25.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton25ActionPerformed(evt);
+            }
+        });
 
         jButton26.setBackground(new java.awt.Color(0, 0, 0));
         jButton26.setForeground(new java.awt.Color(252, 211, 5));
         jButton26.setText("VIEW");
+        jButton26.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton26ActionPerformed(evt);
+            }
+        });
 
         jButton27.setBackground(new java.awt.Color(0, 0, 0));
         jButton27.setForeground(new java.awt.Color(252, 211, 5));
         jButton27.setText("SEARCH");
+        jButton27.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton27ActionPerformed(evt);
+            }
+        });
 
         jButton28.setBackground(new java.awt.Color(0, 0, 0));
         jButton28.setForeground(new java.awt.Color(252, 211, 5));
         jButton28.setText("DELETE");
+        jButton28.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton28ActionPerformed(evt);
+            }
+        });
 
         jButton29.setBackground(new java.awt.Color(0, 0, 0));
         jButton29.setForeground(new java.awt.Color(252, 211, 5));
@@ -1261,9 +1293,9 @@ public class Admin extends javax.swing.JFrame {
         jLabel1.setText("    WORKER SUPERINTENDENCE");
         jLabel1.setOpaque(true);
 
-        jTable1.setBackground(new java.awt.Color(0, 0, 0));
-        jTable1.setForeground(new java.awt.Color(252, 211, 5));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        worTable.setBackground(new java.awt.Color(0, 0, 0));
+        worTable.setForeground(new java.awt.Color(252, 211, 5));
+        worTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -1279,7 +1311,12 @@ public class Admin extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        worTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                worTableMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(worTable);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel2.setText("Category:");
@@ -1296,23 +1333,23 @@ public class Admin extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel13.setText("Salary:");
 
-        jTextField1.setBackground(new java.awt.Color(252, 211, 5));
-        jTextField1.setBorder(null);
-        jTextField1.setOpaque(false);
+        wname.setBackground(new java.awt.Color(252, 211, 5));
+        wname.setBorder(null);
+        wname.setOpaque(false);
 
-        jTextField2.setBorder(null);
-        jTextField2.setOpaque(false);
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        wphone.setBorder(null);
+        wphone.setOpaque(false);
+        wphone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                wphoneActionPerformed(evt);
             }
         });
 
-        jTextField4.setBorder(null);
-        jTextField4.setOpaque(false);
+        wcnic.setBorder(null);
+        wcnic.setOpaque(false);
 
-        jTextField5.setBorder(null);
-        jTextField5.setOpaque(false);
+        wsalary.setBorder(null);
+        wsalary.setOpaque(false);
 
         jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
@@ -1338,18 +1375,38 @@ public class Admin extends javax.swing.JFrame {
         jButton2.setBackground(new java.awt.Color(0, 0, 0));
         jButton2.setForeground(new java.awt.Color(252, 211, 5));
         jButton2.setText("EDIT");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setBackground(new java.awt.Color(0, 0, 0));
         jButton3.setForeground(new java.awt.Color(252, 211, 5));
         jButton3.setText("VIEW");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setBackground(new java.awt.Color(0, 0, 0));
         jButton4.setForeground(new java.awt.Color(252, 211, 5));
         jButton4.setText("SEARCH");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setBackground(new java.awt.Color(0, 0, 0));
         jButton5.setForeground(new java.awt.Color(252, 211, 5));
         jButton5.setText("DELETE");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setBackground(new java.awt.Color(0, 0, 0));
         jButton6.setForeground(new java.awt.Color(252, 211, 5));
@@ -1360,26 +1417,24 @@ public class Admin extends javax.swing.JFrame {
             }
         });
 
-        jComboBox2.setBackground(new java.awt.Color(252, 211, 5));
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Industrial", "Outlet", "Cashier" }));
-        jComboBox2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        wcategory.setBackground(new java.awt.Color(252, 211, 5));
+        wcategory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Industrial", "Outlet", "Cashier" }));
+        wcategory.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
         jLabel27.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel27.setText("Gender:");
 
-        jComboBox4.setBackground(new java.awt.Color(252, 211, 5));
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female" }));
-        jComboBox4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        wgender.setBackground(new java.awt.Color(252, 211, 5));
+        wgender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female" }));
+        wgender.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(240, 240, 240)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(101, 101, 101)
                         .addComponent(jButton1)
@@ -1397,14 +1452,14 @@ public class Admin extends javax.swing.JFrame {
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jSeparator6)
                                     .addComponent(jSeparator2)
-                                    .addComponent(jTextField1)
-                                    .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
-                                    .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
+                                    .addComponent(wname)
+                                    .addComponent(wcnic, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
+                                    .addComponent(wsalary, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
                                     .addComponent(jSeparator1)
                                     .addComponent(jSeparator3)
-                                    .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jComboBox4, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(wcategory, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(wphone, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(wgender, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(29, 29, 29)
@@ -1414,9 +1469,11 @@ public class Admin extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(213, 213, 213)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(208, Short.MAX_VALUE))
-            .addComponent(jScrollPane1)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1425,13 +1482,13 @@ public class Admin extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(wname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(wphone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1439,23 +1496,23 @@ public class Admin extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(wcnic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(1, 1, 1)
                         .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(wcategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(wsalary, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel27)
-                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(wgender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
@@ -1515,6 +1572,9 @@ public class Admin extends javax.swing.JFrame {
 
     private void jButton29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton29ActionPerformed
         // TODO add your handling code here:
+         dispose();
+        MainMenu m = new MainMenu();
+        m.setVisible(true);
     }//GEN-LAST:event_jButton29ActionPerformed
 
     private void jButton29MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton29MouseClicked
@@ -1613,11 +1673,40 @@ public class Admin extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        worker biodata= new worker();
+         
+          biodata.setName(wname.getText());
+          biodata.setPhNo(wphone.getText());
+          biodata.setCnic(wcnic.getText());
+          biodata.setCatagory((String)wcategory.getSelectedItem());
+         
+          
+          biodata.setGender((String)wgender.getSelectedItem());
+          
+          biodata.setSalary(wsalary.getText());
+          
+          
+          e.addWorker(biodata);
+        
+        
+          int size = e.workerList.size();
+                worker.setRowCount(0);
+                for (int i = 0; i < size; i++) {
+                    Object[] obj = {e.workerList.get(i).getName(),e.workerList.get(i).getPhNo(),e.workerList.get(i).getCnic(),e.workerList.get(i).getGender(), e.workerList.get(i).getSalary(),e.workerList.get(i).getCatagory()};
+                    worker.addRow(obj);
+                }
+          wname.setText("");
+          wphone.setText("");
+          wcnic.setText("");
+          wsalary.setText("");
+          
+         
+          
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void wphoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wphoneActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_wphoneActionPerformed
 
     private void mgrTabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mgrTabelMouseClicked
         // TODO add your handling code here:
@@ -1710,7 +1799,7 @@ public class Admin extends javax.swing.JFrame {
     private void jButton24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton24MouseClicked
          
          
-         biodata= new designer();
+          biodata= new designer();
          
           biodata.setName(name.getText());
           biodata.setPhNo(phone.getText());
@@ -1794,23 +1883,216 @@ public class Admin extends javax.swing.JFrame {
         Col = desTable.getColumnCount();
         
         name.setText(dtm.getValueAt(Row, 0).toString());
-        user.setText(dtm.getValueAt(Row, 1).toString());
-//        .setText(dtm.getValueAt(Row, 0).toString());
-//        user.setText(dtm.getValueAt(Row, 1).toString());
-//        name.setText(dtm.getValueAt(Row, 0).toString());
-//        user.setText(dtm.getValueAt(Row, 1).toString());
-//        
-//        for(int i=0;i<e.managerList.size();i++){
-//        if(e.managerList.get(i).getUsername().equals(muser.getText())){
-//          mname.setText(e.managerList.get(i).getName());
-//          mphone.setText(e.managerList.get(i).getPhNo());
-//          mcnic.setText(e.managerList.get(i).getCnic());
-//          mqualification.setText(e.managerList.get(i).getQualification());
-//          msalary.setText(e.managerList.get(i).getSalary());
-//          muser.setText(e.managerList.get(i).getUsername());
-//          mpass.setText(e.managerList.get(i).getPassword());
+        phone.setText(dtm.getValueAt(Row, 1).toString());
+        user.setText(dtm.getValueAt(Row, 2).toString());
+        pass.setText(dtm.getValueAt(Row, 3).toString());
+        cnic.setText(dtm.getValueAt(Row, 4).toString());
+        
+        salary.setText(dtm.getValueAt(Row, 6).toString());
+        qual.setText(dtm.getValueAt(Row, 7).toString());
+        //exp.setText(dtm.getValueAt(Row, 8).toString());
+        email.setText(dtm.getValueAt(Row, 9).toString());
+        
     }//GEN-LAST:event_desTableMouseClicked
 
+    private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25ActionPerformed
+        // TODO add your handling code here:
+        //designer m=new designer();
+         for(int i=0;i<e.designerList.size();i++){
+        if(e.designerList.get(i).getUsername().equals(user.getText())){
+          
+
+          biodata.setName(name.getText());
+          biodata.setPhNo(phone.getText());
+          biodata.setExperience((String)exp.getSelectedItem());
+          biodata.setGender((String)gender.getSelectedItem());
+          biodata.setEmail(email.getText());
+          biodata.setCnic(cnic.getText());
+          biodata.setQualification(qual.getText());
+          biodata.setSalary(salary.getText());
+          biodata.setUsername(user.getText());
+          biodata.setPassword(pass.getText());
+          
+          e.updateDesigner( biodata,i);
+          
+             }
+         }
+         
+         
+         int size = e.designerList.size();
+                dtm.setRowCount(0);
+                for (int i = 0; i < size; i++) {
+                    Object[] obj = {e.designerList.get(i).getName(),e.designerList.get(i).getPhNo(),e.designerList.get(i).getUsername(),e.designerList.get(i).getPassword(), e.designerList.get(i).getCnic(),e.designerList.get(i).getGender(),e.designerList.get(i).getSalary(),e.designerList.get(i).getQualification(), e.designerList.get(i).getExperience(),e.designerList.get(i).getEmail()};
+                    dtm.addRow(obj);
+                }
+          mname.setText("");
+          mphone.setText("");
+          mcnic.setText("");
+          mqualification.setText("");
+          msalary.setText("");
+          muser.setText("");
+          mpass.setText("");
+          memail.setText("");
+    }//GEN-LAST:event_jButton25ActionPerformed
+
+    private void jButton28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton28ActionPerformed
+        // TODO add your handling code here:
+        
+          e.deleteDesigner(Row);
+         int size = e.designerList.size();
+                dtm.setRowCount(0);
+                for (int i = 0; i < size; i++) {
+                    Object[] obj = {e.designerList.get(i).getName(),e.designerList.get(i).getPhNo(),e.designerList.get(i).getUsername(),e.designerList.get(i).getPassword(), e.designerList.get(i).getCnic(),e.designerList.get(i).getGender(),e.designerList.get(i).getSalary(),e.designerList.get(i).getQualification(), e.designerList.get(i).getExperience(),e.designerList.get(i).getEmail()};
+                    dtm.addRow(obj);
+                }
+          mname.setText("");
+          mphone.setText("");
+          mcnic.setText("");
+          mqualification.setText("");
+          msalary.setText("");
+          muser.setText("");
+          mpass.setText("");
+          memail.setText("");
+    }//GEN-LAST:event_jButton28ActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_jButton11ActionPerformed
+    
+    private void jButton27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton27ActionPerformed
+        // TODO add your handling code here:
+        String input= JOptionPane.showInputDialog(this,"Enter CNIC no of manager to search: ");
+        for(int i=0; i<e.designerList.size(); i++){
+            if(e.designerList.get(i).getCnic().equalsIgnoreCase(input))
+            {
+              JOptionPane.showMessageDialog(this,"Found "); 
+              
+        name.setText(dtm.getValueAt(Row, 0).toString());
+        phone.setText(dtm.getValueAt(Row, 1).toString());
+        user.setText(dtm.getValueAt(Row, 2).toString());
+        pass.setText(dtm.getValueAt(Row, 3).toString());
+        cnic.setText(dtm.getValueAt(Row, 4).toString());
+        
+        salary.setText(dtm.getValueAt(Row, 6).toString());
+        qual.setText(dtm.getValueAt(Row, 7).toString());
+        //exp.setText(dtm.getValueAt(Row, 8).toString());
+        email.setText(dtm.getValueAt(Row, 9).toString());
+               
+              
+            }
+        
+    } 
+    }//GEN-LAST:event_jButton27ActionPerformed
+
+    private void jButton26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton26ActionPerformed
+        // TODO add your handling code here:
+        
+        int size = e.designerList.size();
+                dtm.setRowCount(0);
+                for (int i = 0; i < size; i++) {
+                    Object[] obj = {e.designerList.get(i).getName(),e.designerList.get(i).getPhNo(),e.designerList.get(i).getUsername(),e.designerList.get(i).getPassword(), e.designerList.get(i).getCnic(),e.designerList.get(i).getGender(),e.designerList.get(i).getSalary(),e.designerList.get(i).getQualification(), e.designerList.get(i).getExperience(),e.designerList.get(i).getEmail()};
+                    dtm.addRow(obj);
+                }
+    }//GEN-LAST:event_jButton26ActionPerformed
+
+    private void worTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_worTableMouseClicked
+        // TODO add your handling code here:
+        wRow = worTable.getSelectedRow();
+        wCol = worTable.getColumnCount();
+        
+        wname.setText(worker.getValueAt(wRow, 0).toString());
+        wphone.setText(worker.getValueAt(wRow, 1).toString());
+        wcnic.setText(worker.getValueAt(wRow, 2).toString());
+        
+        wsalary.setText(worker.getValueAt(wRow, 4).toString());
+        
+    }//GEN-LAST:event_worTableMouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        worker biodata=new worker();
+        for(int i=0;i<e.workerList.size();i++){
+            if(e.workerList.get(i).getCnic().equals(wcnic.getText())){
+          
+            
+          biodata.setName(wname.getText());
+          biodata.setPhNo(wphone.getText());
+          biodata.setCnic(wcnic.getText());
+          biodata.setCatagory((String)wcategory.getSelectedItem());
+         
+          
+          biodata.setGender((String)wgender.getSelectedItem());
+          
+          biodata.setSalary(wsalary.getText());
+          
+          e.updateWorker(biodata,i);
+          
+             }
+         }
+         
+         
+         int size = e.workerList.size();
+                worker.setRowCount(0);
+                for (int i = 0; i < size; i++) {
+                    Object[] obj = {e.workerList.get(i).getName(),e.workerList.get(i).getPhNo(),e.workerList.get(i).getCnic(),e.workerList.get(i).getGender(), e.workerList.get(i).getSalary(),e.workerList.get(i).getCatagory()};
+                    worker.addRow(obj);
+                }
+                
+          
+          wname.setText("");
+          wphone.setText("");
+          wcnic.setText("");
+          wsalary.setText("");
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        e.deleteWorker(Row);
+         int size = e.workerList.size();
+                worker.setRowCount(0);
+                for (int i = 0; i < size; i++) {
+                    Object[] obj = {e.workerList.get(i).getName(),e.workerList.get(i).getPhNo(),e.workerList.get(i).getCnic(),e.workerList.get(i).getGender(), e.workerList.get(i).getSalary(),e.workerList.get(i).getCatagory()};
+                    worker.addRow(obj);
+                }
+          wname.setText("");
+          wphone.setText("");
+          wcnic.setText("");
+          wsalary.setText("");
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        int size = e.workerList.size();
+                worker.setRowCount(0);
+                for (int i = 0; i < size; i++) {
+                    Object[] obj = {e.workerList.get(i).getName(),e.workerList.get(i).getPhNo(),e.workerList.get(i).getCnic(),e.workerList.get(i).getGender(), e.workerList.get(i).getSalary(),e.workerList.get(i).getCatagory()};
+                    worker.addRow(obj);
+                }
+          
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        String input= JOptionPane.showInputDialog(this,"Enter CNIC no of worker to search: ");
+        for(int i=0; i<e.workerList.size(); i++){
+            if(e.workerList.get(i).getCnic().equalsIgnoreCase(input))
+            {
+              JOptionPane.showMessageDialog(this,"Found "); 
+              
+       wname.setText(worker.getValueAt(wRow, 0).toString());
+        wphone.setText(worker.getValueAt(wRow, 1).toString());
+        wcnic.setText(worker.getValueAt(wRow, 2).toString());
+        
+        wsalary.setText(worker.getValueAt(wRow, 4).toString());
+               
+              
+            }
+        
+    } 
+    }//GEN-LAST:event_jButton4ActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -1875,9 +2157,7 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1957,13 +2237,8 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JComboBox<String> mcat;
     private javax.swing.JTextField mcnic;
@@ -1982,5 +2257,12 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JTextField qual;
     private javax.swing.JTextField salary;
     private javax.swing.JTextField user;
+    private javax.swing.JComboBox<String> wcategory;
+    private javax.swing.JTextField wcnic;
+    private javax.swing.JComboBox<String> wgender;
+    private javax.swing.JTextField wname;
+    private javax.swing.JTable worTable;
+    private javax.swing.JTextField wphone;
+    private javax.swing.JTextField wsalary;
     // End of variables declaration//GEN-END:variables
 }

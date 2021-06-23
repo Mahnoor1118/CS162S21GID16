@@ -15,6 +15,7 @@ public class Studio {
     private static Studio instance ;
     public ArrayList<Manager> managerList = new ArrayList<>();
     public ArrayList<designer> designerList = new ArrayList<>();
+    public ArrayList<worker> workerList=new ArrayList<>();
     
     public static Studio getInstance(){
         if(instance==null)
@@ -54,5 +55,20 @@ public class Studio {
    {
        designerList.set(a,b); 
        
+   }
+   
+   public void addWorker(worker a)
+    {
+        workerList.add(a);
+    }
+   
+   public void updateWorker(worker b, int a )
+   {
+       workerList.set(a,b); 
+   }
+     
+    public void deleteWorker(int a)
+   {
+       workerList.remove(a);
    }
 }
