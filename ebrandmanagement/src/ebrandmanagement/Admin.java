@@ -40,6 +40,10 @@ public class Admin extends javax.swing.JFrame {
     String workerHeader[] = new String[]{"Name", "Phone Number", "CNIC", "Gender", "Salary", "Category"};
     int wRow,wCol;
     DefaultTableModel worker;
+    
+//    String salaryHeader[] = new String[]{"Name", "Phone Number", "CNIC", "Gender", "Salary", "Category"};
+//    int sRow,scol;
+//    DefaultTableModel ;
     /**
      * Creates new form Admin
      */
@@ -78,7 +82,7 @@ public class Admin extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        salTable = new javax.swing.JTable();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
@@ -275,9 +279,9 @@ public class Admin extends javax.swing.JFrame {
         jLabel14.setText("      Enter New Amount of Salary");
         jLabel14.setOpaque(true);
 
-        jTable2.setBackground(new java.awt.Color(0, 0, 0));
-        jTable2.setForeground(new java.awt.Color(252, 211, 5));
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        salTable.setBackground(new java.awt.Color(0, 0, 0));
+        salTable.setForeground(new java.awt.Color(252, 211, 5));
+        salTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -293,7 +297,7 @@ public class Admin extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(salTable);
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel18.setText("Category:");
@@ -1662,6 +1666,7 @@ public class Admin extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
+        boolean flag=false;
         String Cnic=CNIC.getText();
         
         String Category=cat.getSelectedItem().toString();
@@ -1683,6 +1688,8 @@ public class Admin extends javax.swing.JFrame {
            int inc =SALARY+SAlary;
            String INC=inc+"";
            e.workerList.get(i).setSalary(INC);  
+           flag=true;
+           JOptionPane.showMessageDialog(null,"Worker with CNIC number "+Cnic+" has been incremented" );
            
             }
         }
@@ -1699,6 +1706,8 @@ public class Admin extends javax.swing.JFrame {
            int inc =SALARY+SAlary;
            String INC=inc+"";
            e.managerList.get(i).setSalary(INC);  
+           flag=true;
+           JOptionPane.showMessageDialog(null,"Manager with CNIC number "+Cnic+" has been incremented" );
             }
         }
     }
@@ -1714,11 +1723,17 @@ public class Admin extends javax.swing.JFrame {
            int SALARY=Integer.parseInt(SAL);
            int inc =SALARY+SAlary;
            String INC=inc+"";
-           e.designerList.get(i).setSalary(INC);  
+           e.designerList.get(i).setSalary(INC); 
+           flag=true;
+           JOptionPane.showMessageDialog(null,"Designer with CNIC number "+Cnic+" has been incremented" );
             }
         }
     }
-        
+       
+        if(flag==false)
+        {
+            JOptionPane.showMessageDialog(null, "The CNIC number "+ Cnic +" does not exist in the system");
+        }
         
         
         
@@ -2301,7 +2316,6 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JComboBox<String> mcat;
     private javax.swing.JTextField mcnic;
     private javax.swing.JTextField memail;
@@ -2318,6 +2332,7 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JTextField phone;
     private javax.swing.JTextField qual;
     private javax.swing.JTextField sal;
+    private javax.swing.JTable salTable;
     private javax.swing.JTextField salary;
     private javax.swing.JTextField user;
     private javax.swing.JComboBox<String> wcategory;
