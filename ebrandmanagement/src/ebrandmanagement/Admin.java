@@ -82,13 +82,13 @@ public class Admin extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField10 = new javax.swing.JTextField();
+        CNIC = new javax.swing.JTextField();
+        sal = new javax.swing.JTextField();
         jSeparator5 = new javax.swing.JSeparator();
         jSeparator10 = new javax.swing.JSeparator();
         jButton7 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        cat = new javax.swing.JComboBox<>();
         jLabel21 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
@@ -304,12 +304,12 @@ public class Admin extends javax.swing.JFrame {
         jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         jLabel20.setText("Salary:");
 
-        jTextField6.setBackground(new java.awt.Color(252, 211, 5));
-        jTextField6.setBorder(null);
-        jTextField6.setOpaque(false);
+        CNIC.setBackground(new java.awt.Color(252, 211, 5));
+        CNIC.setBorder(null);
+        CNIC.setOpaque(false);
 
-        jTextField10.setBorder(null);
-        jTextField10.setOpaque(false);
+        sal.setBorder(null);
+        sal.setOpaque(false);
 
         jSeparator5.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator5.setForeground(new java.awt.Color(0, 0, 0));
@@ -340,9 +340,9 @@ public class Admin extends javax.swing.JFrame {
             }
         });
 
-        jComboBox3.setBackground(new java.awt.Color(252, 211, 5));
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Worker", "Manager", "Designer" }));
-        jComboBox3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        cat.setBackground(new java.awt.Color(252, 211, 5));
+        cat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Worker", "Manager", "Designer" }));
+        cat.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
         jLabel21.setBackground(new java.awt.Color(0, 0, 0));
         jLabel21.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 24)); // NOI18N
@@ -365,10 +365,10 @@ public class Admin extends javax.swing.JFrame {
                         .addGap(53, 53, 53)
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jSeparator10)
-                            .addComponent(jTextField6)
-                            .addComponent(jTextField10)
+                            .addComponent(CNIC)
+                            .addComponent(sal)
                             .addComponent(jSeparator5)
-                            .addComponent(jComboBox3, 0, 261, Short.MAX_VALUE)))
+                            .addComponent(cat, 0, 261, Short.MAX_VALUE)))
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(278, 278, 278)
                         .addComponent(jButton7)
@@ -390,20 +390,20 @@ public class Admin extends javax.swing.JFrame {
                 .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CNIC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel19))
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 4, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel18))
                 .addGap(40, 40, 40)
                 .addComponent(jLabel14)
                 .addGap(29, 29, 29)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(sal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
@@ -1662,6 +1662,69 @@ public class Admin extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
+        String Cnic=CNIC.getText();
+        
+        String Category=cat.getSelectedItem().toString();
+        
+        String Salar= sal.getText();
+        JOptionPane.showMessageDialog(null, Salar);
+        int SAlary=Integer.parseInt(Salar);
+        
+        if(Category=="Worker")
+        {
+        for(int i=0; i<e.workerList.size(); i++)
+        {
+            if(e.workerList.get(i).getCnic().equals(Cnic))
+            {
+                
+           String SAL=e.workerList.get(i).getSalary();
+           int SALARY=Integer.parseInt(SAL);
+           
+           int inc =SALARY+SAlary;
+           String INC=inc+"";
+           e.workerList.get(i).setSalary(INC);  
+           
+            }
+        }
+    }  
+        
+        if(Category=="Manager")
+        {
+        for(int i=0; i<e.managerList.size(); i++)
+        {
+            if(e.managerList.get(i).getCnic().equals(Cnic))
+            {
+           String SAL=e.managerList.get(i).getSalary();
+           int SALARY=Integer.parseInt(SAL);
+           int inc =SALARY+SAlary;
+           String INC=inc+"";
+           e.managerList.get(i).setSalary(INC);  
+            }
+        }
+    }
+        
+        
+        if(Category=="Designer")
+        {
+        for(int i=0; i<e.designerList.size(); i++)
+        {
+            if(e.designerList.get(i).getCnic().equals(Cnic))
+            {
+           String SAL=e.designerList.get(i).getSalary();
+           int SALARY=Integer.parseInt(SAL);
+           int inc =SALARY+SAlary;
+           String INC=inc+"";
+           e.designerList.get(i).setSalary(INC);  
+            }
+        }
+    }
+        
+        
+        
+        
+        //Manager, Designer
+        
+        
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
@@ -2129,6 +2192,8 @@ public class Admin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField CNIC;
+    private javax.swing.JComboBox<String> cat;
     private javax.swing.JTextField cnic;
     private javax.swing.JTable desTable;
     private javax.swing.JTextField email;
@@ -2157,7 +2222,6 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -2238,8 +2302,6 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JComboBox<String> mcat;
     private javax.swing.JTextField mcnic;
     private javax.swing.JTextField memail;
@@ -2255,6 +2317,7 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JTextField pass;
     private javax.swing.JTextField phone;
     private javax.swing.JTextField qual;
+    private javax.swing.JTextField sal;
     private javax.swing.JTextField salary;
     private javax.swing.JTextField user;
     private javax.swing.JComboBox<String> wcategory;
